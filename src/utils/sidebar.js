@@ -2,6 +2,9 @@ import Generic from "../page/Generic";
 import Buyurtmalar from "../page/Buyurtmalar";
 import Mahsulotlar from "../components/Mahsulotlar";
 import Kategoriya from "../components/Kategoriya";
+import Filiallar from "../components/Filiallar";
+import Mijozlar from "../components/Mijozlar";
+import Katalog from "../components/Katalog";
 import { ReactComponent as buyurtmalar } from "../assets/icon/buyurtmalar.svg";
 import { ReactComponent as maxsulotlar } from "../assets/icon/maxsulolar.svg";
 import { ReactComponent as kategoriya } from "../assets/icon/kategoriya.svg";
@@ -10,8 +13,6 @@ import { ReactComponent as mijozlar } from "../assets/icon/mijozlar.svg";
 import { ReactComponent as xisobot } from "../assets/icon/xisobot.svg";
 import { ReactComponent as hodimlar } from "../assets/icon/katalog.svg";
 import { ReactComponent as katalog } from "../assets/icon/katalog.svg";
-import Filiallar from "../components/Filiallar";
-import Mijozlar from "../components/Mijozlar";
 
 export const sidebar = [
   {
@@ -74,7 +75,7 @@ export const sidebar = [
     id: 8,
     path: "/katalog",
     titile: "katalog",
-    Component: Generic,
+    Component: Katalog,
     Icon: katalog,
     hiddeh: false,
   },
