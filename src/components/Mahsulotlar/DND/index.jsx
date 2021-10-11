@@ -16,16 +16,14 @@ import {
 import { data } from "../../../mock/mahsulotlar";
 import Delete from "../../Generic/Delete";
 import Edit from "../../Generic/Edit";
+import Cancel from "../../Generic/Cancel";
 import restoreIcon from "../../../assets/icon/restoreIcon.svg";
 
 export const DND = () => {
   const [baza, setBaza] = useState(data);
   const [restore] = useState(data);
   const [selected, setSelected] = useState(null);
-  const [name, setName] = useState("");
-  const [qohsimcha, setQoshimcha] = useState("");
-  const [price, setPrice] = useState("");
-  const [categoriya, setKategoriya] = useState("");
+
   const onDelete = (value) => {
     const filtered = baza.filter((data) => data.id !== value.id);
     setBaza(filtered);
@@ -78,9 +76,15 @@ export const DND = () => {
                 <div onClick={() => onDelete(value)}>
                   <Delete />
                 </div>
-                <div onClick={() => onEdit(value)}>
-                  <Edit />
-                </div>
+                {selected === value.id ? (
+                  <div onClick={() => setSelected(null)}>
+                    <Cancel />
+                  </div>
+                ) : (
+                  <div onClick={() => onEdit(value)}>
+                    <Edit />
+                  </div>
+                )}
               </Action>
             </Dates>
           </Wrapper>
