@@ -52,7 +52,7 @@ export const ProductCard = ({ value }) => {
             <UserCard.User />
             <Info.Name>{value.user.name}</Info.Name>
           </UserCard.Info>
-          <UserCard.Info top>
+          <UserCard.Info top="true">
             <UserCard.Phone />
             <Info.Number>+998 {value.user.phone}</Info.Number>
           </UserCard.Info>
@@ -60,7 +60,7 @@ export const ProductCard = ({ value }) => {
       </Wrapper>
       <Wrapper>
         <WrapperInSide>
-          <WrapperInSide.Top space>
+          <WrapperInSide.Top space="true">
             <WrapperInSide.Bottom>
               <WrapperInSide.Top>
                 <UserCard.Notepad />
@@ -82,13 +82,13 @@ export const ProductCard = ({ value }) => {
           </WrapperInSide.Bottom>
         </WrapperInSide>
       </Wrapper>
-      <Wrapper end>
-        <WrapperInSide.Bottom space>
+      <Wrapper end="true">
+        <WrapperInSide.Bottom space="true">
           <div>
             <Info.Total>Operator:</Info.Total>
             <Info.Name>{value.operator.name}</Info.Name>
           </div>
-          <Info.Total top>Filial:</Info.Total>
+          <Info.Total top="true">Filial:</Info.Total>
           <Info.Name>
             {value.filial.title}
             <br />

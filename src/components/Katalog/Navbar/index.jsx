@@ -12,7 +12,7 @@ import {
 const Navbar = () => {
   return (
     <Container>
-      <Wrapper width>
+      <Wrapper width="true">
         <Plus />
         <Title>Yangi maxsulot qo'shish</Title>
       </Wrapper>

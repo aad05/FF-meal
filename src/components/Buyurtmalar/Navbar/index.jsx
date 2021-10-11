@@ -18,7 +18,7 @@ const Navbar = (props) => {
   console.log(isTabActive);
   return (
     <Container>
-      <Wrapper align order={"first"}>
+      <Wrapper align="true" order={"first"}>
         <Plus />
         <Title>Yangi buyurtma qo'shish</Title>
         <ToggleClone>
@@ -78,7 +78,7 @@ const Navbar = (props) => {
           </Tab.Item>
         </Tab>
       </Wrapper>
-      <Wrapper align order={"third"}>
+      <Wrapper align="true" order={"third"}>
         <Toggle>
           <IconsWrapper
             active={isTabActive}

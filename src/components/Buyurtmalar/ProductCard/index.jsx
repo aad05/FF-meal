@@ -43,7 +43,7 @@ export const ProductCard = ({ value }) => {
   };
   return (
     <Container>
-      <Wrapper align>
+      <Wrapper align="true">
         <Info.OrderID>{value.orderId}</Info.OrderID>
         <SaveWrapper>
           <Save src={save} />
@@ -55,7 +55,7 @@ export const ProductCard = ({ value }) => {
           {`${value.time.getHours()} : ${value.time.getMinutes()}`}
         </Info.Text>
       </Wrapper>
-      <Wrapper flex>
+      <Wrapper flex="true">
         <UserCard>
           <Info.User />
           <UserCard.Titile>
@@ -63,7 +63,7 @@ export const ProductCard = ({ value }) => {
             <Info.Number>+998 {value.user.phone}</Info.Number>
           </UserCard.Titile>
         </UserCard>
-        <UserCard space>
+        <UserCard space="true">
           <div>
             <Info.Total>Umumiy summa</Info.Total>
             <Info.Price>{value.total} UZS</Info.Price>
@@ -72,14 +72,14 @@ export const ProductCard = ({ value }) => {
           <Info.PaymeText>Payme</Info.PaymeText>
         </UserCard>
       </Wrapper>
-      <Wrapper last>
+      <Wrapper last="true">
         <FooterWrapper>
           <Footer>
             <div>
               <Info.Total>Operator:</Info.Total>
               <Info.Name>{value.operator.name}</Info.Name>
             </div>
-            <Info.Total top>Filial:</Info.Total>
+            <Info.Total top="true">Filial:</Info.Total>
             <Info.Name>
               {value.filial.title}
               <br />

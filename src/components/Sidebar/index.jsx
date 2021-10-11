@@ -35,7 +35,7 @@ export const Sidebar = () => {
           );
         })}
       </Wrapper>
-      <Wrapper chiqish>
+      <Wrapper chiqish="true">
         <IconWrapper>
           <Chiqish />
         </IconWrapper>
