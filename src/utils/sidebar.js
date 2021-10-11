@@ -10,6 +10,7 @@ import { ReactComponent as mijozlar } from "../assets/icon/mijozlar.svg";
 import { ReactComponent as xisobot } from "../assets/icon/xisobot.svg";
 import { ReactComponent as hodimlar } from "../assets/icon/katalog.svg";
 import { ReactComponent as katalog } from "../assets/icon/katalog.svg";
+import Filiallar from "../components/Filiallar";
 
 export const sidebar = [
   {
@@ -40,7 +41,7 @@ export const sidebar = [
     id: 4,
     path: "/filiallar",
     titile: "filiallar",
-    Component: Generic,
+    Component: Filiallar,
     Icon: filiallar,
     hiddeh: false,
   },
