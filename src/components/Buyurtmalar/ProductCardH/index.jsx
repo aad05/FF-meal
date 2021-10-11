@@ -17,6 +17,7 @@ import clock from "../../../assets/icon/clock.svg";
 import Cancel from "../../Generic/Cancel";
 import Done from "../../Generic/Done";
 import { BuyurtmaContext } from "../../../context/buyurtmalar";
+
 export const ProductCard = ({ value }) => {
   const [buyurtmaData, setBuyurtmaData] = BuyurtmaContext();
 
