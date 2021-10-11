@@ -1,5 +1,6 @@
 import Generic from "../page/Generic";
 import Buyurtmalar from "../page/Buyurtmalar";
+import Mahsulotlar from "../components/Mahsulotlar";
 import { ReactComponent as buyurtmalar } from "../assets/icon/buyurtmalar.svg";
 import { ReactComponent as maxsulotlar } from "../assets/icon/maxsulolar.svg";
 import { ReactComponent as kategoriya } from "../assets/icon/kategoriya.svg";
@@ -22,7 +23,7 @@ export const sidebar = [
     id: 2,
     path: "/maxsulotlar",
     titile: "Maxsulotlar",
-    Component: Generic,
+    Component: Mahsulotlar,
     Icon: maxsulotlar,
     hiddeh: false,
   },

@@ -14,8 +14,8 @@ export const Container = styled.div`
 export const IconFilter = styled(filter)`
   width: 40px;
   height: 40px;
-  padding: 10px;
-  margin: 5px;
+  padding: 8px;
+  /* margin: 5px; */
   background: #ffffff;
   box-shadow: 0px 2px 2px rgba(174, 176, 181, 0.314986);
   border-radius: 20px;
