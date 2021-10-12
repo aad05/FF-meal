@@ -18,13 +18,13 @@ import Delete from "../../Generic/Delete";
 import Edit from "../../Generic/Edit";
 import Cancel from "../../Generic/Cancel";
 import restoreIcon from "../../../assets/icon/restoreIcon.svg";
-
+import Agree from "../../Generic/Agree";
+// import Disagree from "../../Generic/Disagree";
 export const DND = () => {
   const [baza, setBaza] = useState(data);
   const [restore] = useState(data);
   const [selected, setSelected] = useState(null);
   const [currentCard, setCurrentCard] = useState(null);
-  const [user, setUser] = useState("Block");
   const onDelete = (value) => {
     const filtered = baza.filter((data) => data.id !== value.id);
     setBaza(filtered);
@@ -105,12 +105,14 @@ export const DND = () => {
                   value.order
                 )}
               </Title>
-              {user === "Block" ? (
-                <Status>{user}</Status>
-              ) : (
-                <Status green="true">{user}</Status>
-              )}
+              <Status>{value.status}</Status>
               <Action>
+                <div>
+                  <Agree />
+                </div>
+                {/* <div>
+                  <Disagree />
+                </div> */}
                 <div onClick={() => onDelete(value)}>
                   <Delete />
                 </div>
