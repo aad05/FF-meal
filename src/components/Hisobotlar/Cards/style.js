@@ -2,51 +2,83 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
-  flex-direction: column;
-  width: 100%;
-  margin-top: 10px;
-  justify-content: center;
+  margin: 33px 38px;
 `;
 export const Wrapper = styled.div`
-  width: 95%;
-  margin: 0 30px;
-  background-color: #fff;
   display: flex;
-  flex-direction: column;
-  border-radius: 6px;
-  margin-top: 10px;
-  justify-content: center;
-  cursor: pointer;
-  :hover {
-    box-shadow: 0px 20px 25px rgba(176, 177, 181, 0.432802);
-  }
-`;
-export const Dates = styled.div`
-  display: flex;
-  justify-content: space-between;
-  margin-top: 10px;
-  padding: 10px 50px;
   flex: 1;
-  align-items: center;
+  margin-right: 14px;
+  flex-direction: column;
 `;
-export const Title = styled.div`
-  font-family: SFProDisplay;
-  font-size: 13px;
-  line-height: 15px;
-  color: #2d3a45;
-  padding-left: ${({ left }) => left && "20px"};
-`;
-export const Image = styled.img`
-  width: 50px;
+export const Dashboar = styled.div`
+  width: 100%;
   height: 50px;
-  border-radius: 50%;
-`;
-export const Action = styled.div`
   display: flex;
-`;
-export const ImageText = styled.div`
-  display: flex;
+  background-color: #fff;
+  margin-bottom: 20px;
+  border-radius: 6px;
+  justify-content: space-around;
   align-items: center;
+`;
+Dashboar.Price = styled.div`
+  font-family: SFProDisplay bold;
+  font-size: 18px;
+  line-height: 18px;
+  letter-spacing: 0.6px;
+  color: #2d3a45;
+`;
+Dashboar.Icon = styled.div`
+  width: 20px;
+  min-width: 20px;
+  min-height: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #20d472;
+`;
+Dashboar.Icon2 = styled.div`
+  width: 20px;
+  min-width: 20px;
+  min-height: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #11acfd;
+`;
+Dashboar.Icon3 = styled.div`
+  width: 20px;
+  min-width: 20px;
+  min-height: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #fcb600;
+`;
+Dashboar.Icon4 = styled.div`
+  width: 20px;
+  min-width: 20px;
+  min-height: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #8e007e;
+`;
+export const Length = styled.div`
+  width: 30px;
+  height: 20px;
+  background: #ffffff;
+  border-radius: 4px;
+  font-family: SFProDisplay;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 0.4px;
+  color: #2d3a45;
+  mix-blend-mode: normal;
+  opacity: 0.7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10px;
+`;
+export const Text = styled.div`
+  display: flex;
+  margin-bottom: 10px;
 `;
 export const ButtonAll = styled.div`
   display: flex;
@@ -67,6 +99,10 @@ export const Restore = styled.div`
   cursor: pointer;
   background-color: #fcb600;
 `;
+// export const RestoreButton = styled.div`
+//   display: flex;
+//   justify-content: center;
+// `;
 export const RestoreIcon = styled.img`
   width: 25px;
   height: 25px;
@@ -85,6 +121,7 @@ export const RestoreButton = styled.div`
   cursor: pointer;
   text-transform: uppercase;
   background-color: #ffffff;
+  /* border: 1px solid rgba(22, 76, 167, 0.6); */
   border-radius: 10px;
   color: #1d89ff;
   font-weight: 400;
@@ -172,13 +209,4 @@ export const RestoreButton = styled.div`
       }
     }
   }
-`;
-export const Input = styled.input`
-  outline: none;
-  font-size: 15px;
-  width: 80%;
-  height: 30px;
-  border-radius: 24px;
-  border: 1px solid #fcb600;
-  padding-left: 15px;
 `;
