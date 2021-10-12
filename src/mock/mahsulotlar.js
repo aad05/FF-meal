@@ -9,6 +9,7 @@ import burgermini from "../assets/img/burgermini.png";
 export const data = [
   {
     id: 1,
+    order: 2,
     Img: lavash,
     title: "Lavash Mini",
     categoriya: "Lavash",
@@ -17,6 +18,7 @@ export const data = [
   },
   {
     id: 2,
+    order: 4,
     Img: lavashmini,
     title: "Lavash Mini",
     categoriya: "Lavash",
@@ -25,6 +27,7 @@ export const data = [
   },
   {
     id: 3,
+    order: 1,
     Img: lavashmax,
     title: "Lavash Mini",
     categoriya: "Lavash",
@@ -33,6 +36,7 @@ export const data = [
   },
   {
     id: 4,
+    order: 3,
     Img: cola,
     title: "Lavash Mini",
     categoriya: "Lavash",
@@ -41,6 +45,7 @@ export const data = [
   },
   {
     id: 5,
+    order: 7,
     Img: cola0,
     title: "Lavash Mini",
     categoriya: "Lavash",
@@ -49,6 +54,7 @@ export const data = [
   },
   {
     id: 6,
+    order: 5,
     Img: chizburgermax,
     title: "Lavash Mini",
     categoriya: "Lavash",
@@ -57,6 +63,7 @@ export const data = [
   },
   {
     id: 7,
+    order: 6,
     Img: burgermini,
     title: "Lavash Mini",
     categoriya: "Lavash",
@@ -65,6 +72,7 @@ export const data = [
   },
   {
     id: 8,
+    order: 10,
     Img: lavash,
     title: "Lavash Mini",
     categoriya: "Lavash",
@@ -73,6 +81,7 @@ export const data = [
   },
   {
     id: 9,
+    order: 9,
     Img: lavashmini,
     title: "Lavash Mini",
     categoriya: "Lavash",
@@ -81,6 +90,7 @@ export const data = [
   },
   {
     id: 10,
+    order: 8,
     Img: lavashmax,
     title: "Lavash Mini",
     categoriya: "Lavash",

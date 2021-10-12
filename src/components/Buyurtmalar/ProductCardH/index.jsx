@@ -19,13 +19,13 @@ import Done from "../../Generic/Done";
 import { BuyurtmaContext } from "../../../context/buyurtmalar";
 
 export const ProductCard = ({ value }) => {
-  const [buyurtmaData, setBuyurtmaData] = BuyurtmaContext();
+  const [card, setBuyurtmaData] = BuyurtmaContext();
 
   const onCancel = (value) => {
-    let filtered = buyurtmaData[value.categoriya].filter(
+    let filtered = card[value.categoriya].filter(
       (data) => data.id !== value.id
     );
-    let newData = { ...buyurtmaData, [value.categoriya]: filtered };
+    let newData = { ...card, [value.categoriya]: filtered };
     setBuyurtmaData(newData);
   };
   return (

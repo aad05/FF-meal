@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import DNDNavbar from "../DNDNavbar";
 import DND from "../DND";
+import DND2 from "../DND2";
 import Else from "../Else";
 export const Body = () => {
   const [condition, setCondition] = useState(true);
@@ -13,7 +14,7 @@ export const Body = () => {
           <Else />
         </div>
       ) : (
-        <DND />
+        <DND2 />
       )}
     </div>
   );

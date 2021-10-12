@@ -1,10 +1,11 @@
 import Generic from "../page/Generic";
 import Buyurtmalar from "../page/Buyurtmalar";
 import Mahsulotlar from "../components/Mahsulotlar";
-import Kategoriya from "../components/Kategoriya";
-import Filiallar from "../components/Filiallar";
-import Mijozlar from "../components/Mijozlar";
-import Katalog from "../components/Katalog";
+import Kategoriya from "../page/Kategoriya";
+import Filiallar from "../page/Filiallar";
+import Mijozlar from "../page/Mijozlar";
+import Katalog from "../page/Katalog";
+import Hisobotlar from "../page/Hisobotlar";
 import { ReactComponent as buyurtmalar } from "../assets/icon/buyurtmalar.svg";
 import { ReactComponent as maxsulotlar } from "../assets/icon/maxsulolar.svg";
 import { ReactComponent as kategoriya } from "../assets/icon/kategoriya.svg";
@@ -59,7 +60,7 @@ export const sidebar = [
     id: 6,
     path: "/xisobot",
     titile: "xisobot",
-    Component: Generic,
+    Component: Hisobotlar,
     Icon: xisobot,
     hiddeh: false,
   },
