@@ -16,6 +16,7 @@ const Navbar = (props) => {
   const [isActive, setActive] = useState("yangi");
   const [isTabActive, setTabActive] = useState(true);
   console.log(isTabActive);
+
   return (
     <Container>
       <Wrapper align="true" order={"first"}>
@@ -47,22 +48,27 @@ const Navbar = (props) => {
           <Tab.Item
             onClick={() => {
               isTabActive && setActive("yangi");
+              props.clicked("yangi");
             }}
             active={isActive === "yangi"}
           >
             Yangi
           </Tab.Item>
+
           <Tab.Item
             onClick={() => {
               isTabActive && setActive("qabul qilingan");
+              props.clicked("qabul");
             }}
             active={isActive === "qabul qilingan"}
           >
             Qabul Qilingan
           </Tab.Item>
+
           <Tab.Item
             onClick={() => {
               isTabActive && setActive("jonatilgan");
+              props.clicked("jonatilganlar");
             }}
             active={isActive === "jonatilgan"}
           >
@@ -71,6 +77,7 @@ const Navbar = (props) => {
           <Tab.Item
             onClick={() => {
               isTabActive && setActive("yopilgan");
+              props.clicked("yopilgan");
             }}
             active={isActive === "yopilgan"}
           >

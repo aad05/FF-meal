@@ -3,10 +3,13 @@ import { Container, Wrapper } from "./style";
 import ProductCardH from "../ProductCardH";
 import { card } from "../../../mock/card";
 
-export const MenuH = () => {
+export const MenuH = ({ productType }) => {
   return (
     <Container>
-      <Wrapper>
+      {card[productType].map((value) => (
+        <ProductCardH key={value.id} value={value} />
+      ))}
+      {/* <Wrapper>
         {card.yangi.map((value) => (
           <ProductCardH key={value.id} value={value} />
         ))}
@@ -26,7 +29,7 @@ export const MenuH = () => {
         {card.yopilgan.map((value) => (
           <ProductCardH key={value.id} value={value} />
         ))}
-      </Wrapper>
+      </Wrapper> */}
     </Container>
   );
 };
