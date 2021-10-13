@@ -66,8 +66,8 @@ export const sidebar = [
   },
   {
     id: 7,
-    path: "/hodimlar",
-    titile: "hodimlar",
+    path: "/manzil",
+    titile: "manzil",
     Component: Generic,
     Icon: hodimlar,
     hiddeh: false,
