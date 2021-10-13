@@ -80,8 +80,8 @@ export const Diagram = () => {
             <Area
               type="monotone"
               dataKey="uv"
-              stroke="#19C655"
-              fill="#99ebb6"
+              stroke="#FA2738"
+              fill="#f5818b"
             />
           </AreaChart>
         </ResponsiveContainer>
