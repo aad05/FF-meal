@@ -28,7 +28,7 @@ const Navbar = (props) => {
             onClick={() => {
               setTabActive(true);
               props.onClick(true);
-            }}
+            }}Stats
           >
             <MenuV />
           </IconsWrapper>

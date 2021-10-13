@@ -5,7 +5,6 @@ import Kategoriya from "../page/Kategoriya";
 import Filiallar from "../page/Filiallar";
 import Mijozlar from "../page/Mijozlar";
 import Katalog from "../page/Katalog";
-import Hisobotlar from "../page/Hisobotlar";
 import { ReactComponent as buyurtmalar } from "../assets/icon/buyurtmalar.svg";
 import { ReactComponent as maxsulotlar } from "../assets/icon/maxsulolar.svg";
 import { ReactComponent as kategoriya } from "../assets/icon/kategoriya.svg";
@@ -14,6 +13,7 @@ import { ReactComponent as mijozlar } from "../assets/icon/mijozlar.svg";
 import { ReactComponent as xisobot } from "../assets/icon/xisobot.svg";
 import { ReactComponent as hodimlar } from "../assets/icon/katalog.svg";
 import { ReactComponent as katalog } from "../assets/icon/katalog.svg";
+import Xisobotlar from "../components/Hisobotlar";
 
 export const sidebar = [
   {
@@ -60,7 +60,7 @@ export const sidebar = [
     id: 6,
     path: "/xisobot",
     titile: "xisobot",
-    Component: Hisobotlar,
+    Component: Xisobotlar,
     Icon: xisobot,
     hiddeh: false,
   },
