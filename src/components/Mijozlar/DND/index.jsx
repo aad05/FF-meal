@@ -19,12 +19,15 @@ import Edit from "../../Generic/Edit";
 import Cancel from "../../Generic/Cancel";
 import restoreIcon from "../../../assets/icon/restoreIcon.svg";
 import Agree from "../../Generic/Agree";
-// import Disagree from "../../Generic/Disagree";
+import Disagree from "../../Generic/Disagree";
+
 export const DND = () => {
   const [baza, setBaza] = useState(data);
   const [restore] = useState(data);
   const [selected, setSelected] = useState(null);
+  const [userselected, setUserSelected] = useState(null);
   const [currentCard, setCurrentCard] = useState(null);
+  const [user, setUser] = useState();
   const onDelete = (value) => {
     const filtered = baza.filter((data) => data.id !== value.id);
     setBaza(filtered);
@@ -68,6 +71,10 @@ export const DND = () => {
       return -1;
     }
   };
+  const onAgree = (value) => {
+    setUserSelected(value.id);
+    setUser("Active");
+  };
   return (
     <Container>
       {baza.length !== 0 ? (
@@ -107,12 +114,15 @@ export const DND = () => {
               </Title>
               <Status>{value.status}</Status>
               <Action>
-                <div>
-                  <Agree />
-                </div>
-                {/* <div>
-                  <Disagree />
-                </div> */}
+                {userselected === value.id ? (
+                  <div onClick={() => setUserSelected(null)}>
+                    <Disagree />
+                  </div>
+                ) : (
+                  <div onClick={() => onAgree(value)}>
+                    <Agree />
+                  </div>
+                )}
                 <div onClick={() => onDelete(value)}>
                   <Delete />
                 </div>
