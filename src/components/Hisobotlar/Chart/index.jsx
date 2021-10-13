@@ -1,6 +1,12 @@
 import React from "react";
+import Diagram from "../Diagram";
+import { Container } from "./style";
 
 export const Charts = () => {
-  return <div>Charts Component</div>;
+  return (
+    <Container>
+      <Diagram />
+    </Container>
+  );
 };
 export default Charts;
