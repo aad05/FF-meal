@@ -1,4 +1,3 @@
-import Generic from "../page/Generic";
 import Buyurtmalar from "../page/Buyurtmalar";
 import Mahsulotlar from "../components/Mahsulotlar";
 import Kategoriya from "../page/Kategoriya";
@@ -14,7 +13,7 @@ import { ReactComponent as xisobot } from "../assets/icon/xisobot.svg";
 import { ReactComponent as hodimlar } from "../assets/icon/katalog.svg";
 import { ReactComponent as katalog } from "../assets/icon/katalog.svg";
 import Xisobotlar from "../components/Hisobotlar";
-
+import { Manzil } from "../page/Manzil";
 export const sidebar = [
   {
     id: 1,
@@ -66,9 +65,9 @@ export const sidebar = [
   },
   {
     id: 7,
-    path: "/manzil",
-    titile: "manzil",
-    Component: Generic,
+    path: "/diler",
+    titile: "Diler",
+    Component: Manzil,
     Icon: hodimlar,
     hiddeh: false,
   },
