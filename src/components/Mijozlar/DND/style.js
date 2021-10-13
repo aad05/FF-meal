@@ -33,7 +33,7 @@ export const Title = styled.div`
   font-family: SFProDisplay;
   font-size: 13px;
   line-height: 15px;
-  color: #2d3a45;
+  color: ${({ gren }) => (gren ? "#20D472" : "#2d3a45;")};
   padding-left: ${({ left }) => left && "20px"};
 `;
 export const Status = styled.div`

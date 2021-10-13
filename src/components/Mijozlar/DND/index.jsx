@@ -27,12 +27,15 @@ export const DND = () => {
   const [selected, setSelected] = useState(null);
   const [userselected, setUserSelected] = useState(null);
   const [currentCard, setCurrentCard] = useState(null);
-  const [user, setUser] = useState();
+  const [user, setUser] = useState(true);
   const onDelete = (value) => {
     const filtered = baza.filter((data) => data.id !== value.id);
     setBaza(filtered);
   };
-
+  const onDisagree = () => {
+    setUserSelected(null);
+    setUser(false);
+  };
   const onRestore = () => {
     setBaza(restore);
   };
@@ -112,10 +115,14 @@ export const DND = () => {
                   value.order
                 )}
               </Title>
-              <Status>{value.status}</Status>
+              {userselected === value.id ? (
+                <Status>{value.block}</Status>
+              ) : (
+                <Title gren>{value.active}</Title>
+              )}
               <Action>
                 {userselected === value.id ? (
-                  <div onClick={() => setUserSelected(null)}>
+                  <div onClick={onDisagree}>
                     <Disagree />
                   </div>
                 ) : (
