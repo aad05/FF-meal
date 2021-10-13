@@ -2,20 +2,22 @@ import React, { useState } from "react";
 import {
   Container,
   IconsWrapper,
-  MenuH,
-  MenuV,
   Plus,
   Tab,
   Title,
   Toggle,
   Wrapper,
   ToggleClone,
+  SearchIcon,
+  FilterDiv,
+  Filter,
+  Stats,
+  Download,
 } from "./style";
 
 const Navbar = (props) => {
-  const [isActive, setActive] = useState("yangi");
+  // const [isActive, setActive] = useState("yangi");
   const [isTabActive, setTabActive] = useState(true);
-  console.log(isTabActive);
   return (
     <Container>
       <Wrapper align="true" order={"first"}>
@@ -27,9 +29,9 @@ const Navbar = (props) => {
             onClick={() => {
               setTabActive(true);
               props.onClick(true);
-            }}Stats
+            }}
           >
-            <MenuV />
+            <Stats />
           </IconsWrapper>
           <IconsWrapper
             active={!isTabActive}
@@ -38,45 +40,16 @@ const Navbar = (props) => {
               props.onClick(false);
             }}
           >
-            <MenuH />
+            <Download />
           </IconsWrapper>
         </ToggleClone>
       </Wrapper>
       <Wrapper order={"second"}>
-        <Tab active={isTabActive}>
-          <Tab.Item
-            onClick={() => {
-              isTabActive && setActive("yangi");
-            }}
-            active={isActive === "yangi"}
-          >
-            Yangi
-          </Tab.Item>
-          <Tab.Item
-            onClick={() => {
-              isTabActive && setActive("qabul qilingan");
-            }}
-            active={isActive === "qabul qilingan"}
-          >
-            Qabul Qilingan
-          </Tab.Item>
-          <Tab.Item
-            onClick={() => {
-              isTabActive && setActive("jonatilgan");
-            }}
-            active={isActive === "jonatilgan"}
-          >
-            Jo'natilgan
-          </Tab.Item>
-          <Tab.Item
-            onClick={() => {
-              isTabActive && setActive("yopilgan");
-            }}
-            active={isActive === "yopilgan"}
-          >
-            Yopilgan
-          </Tab.Item>
-        </Tab>
+        <Tab placeholder={"Qidirish"} />
+        <SearchIcon />
+        <FilterDiv>
+          <Filter />
+        </FilterDiv>
       </Wrapper>
       <Wrapper align="true" order={"third"}>
         <Toggle>
@@ -87,7 +60,7 @@ const Navbar = (props) => {
               props.onClick(true);
             }}
           >
-            <MenuV active={isTabActive} />
+            <Download active={isTabActive} />
           </IconsWrapper>
           <IconsWrapper
             active={!isTabActive}
@@ -96,7 +69,7 @@ const Navbar = (props) => {
               props.onClick(false);
             }}
           >
-            <MenuH active={!isTabActive} />
+            <Stats active={!isTabActive} />
           </IconsWrapper>
         </Toggle>
       </Wrapper>
