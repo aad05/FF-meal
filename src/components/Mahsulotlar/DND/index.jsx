@@ -23,6 +23,7 @@ export const DND = () => {
   const [baza, setBaza] = useState(data);
   const [restore] = useState(data);
   const [selected, setSelected] = useState(null);
+  const [currentCard, setCurrentCard] = useState(null);
 
   const onDelete = (value) => {
     const filtered = baza.filter((data) => data.id !== value.id);
@@ -34,18 +35,57 @@ export const DND = () => {
   const onEdit = (value) => {
     setSelected(value.id);
   };
-
+  const dragStartHandler = (e, value) => {
+    setCurrentCard(value);
+  };
+  const dragEndHandler = (e) => {
+    e.target.style.background = "white";
+  };
+  const dragOverHandler = (e) => {
+    e.preventDefault();
+    e.target.style.background = "lightgray";
+  };
+  const dropHandler = (e, value) => {
+    e.preventDefault();
+    setBaza(
+      baza.map((c) => {
+        if (c.id === value.id) {
+          return { ...c, order: currentCard.order };
+        }
+        if (c.id === currentCard.id) {
+          return { ...c, order: value.order };
+        }
+        return c;
+      })
+    );
+    e.target.style.background = "white";
+  };
+  const sortCards = (a, b) => {
+    if (a.order < b.order) {
+      return 1;
+    } else {
+      return -1;
+    }
+  };
   return (
     <Container>
       {baza.length !== 0 ? (
-        baza.map((value) => (
-          <Wrapper key={value.id}>
+        baza.sort(sortCards).map((value) => (
+          <Wrapper
+            onDragStart={(e) => dragStartHandler(e, value)}
+            onDragLeave={(e) => dragEndHandler(e)}
+            onDragEnd={(e) => dragEndHandler(e)}
+            onDragOver={(e) => dragOverHandler(e)}
+            onDrop={(e) => dropHandler(e, value)}
+            draggable={true}
+            key={value.id}
+          >
             <Dates>
               <ImageText>
                 <Image src={value.Img} />
                 <Title left="true">
                   {selected === value.id ? (
-                    <Input type="text" value={value.title} />
+                    <Input type="text" defaultValue={value.title} />
                   ) : (
                     value.title
                   )}
@@ -53,21 +93,21 @@ export const DND = () => {
               </ImageText>
               <Title>
                 {selected === value.id ? (
-                  <Input type="text" value={value.categoriya} />
+                  <Input type="text" defaultValue={value.categoriya} />
                 ) : (
                   value.categoriya
                 )}
               </Title>
               <Title>
                 {selected === value.id ? (
-                  <Input type="text" value={value.price} />
+                  <Input type="text" defaultValue={value.price} />
                 ) : (
                   value.price + "UZS"
                 )}
               </Title>
               <Title>
                 {selected === value.id ? (
-                  <Input type="text" value={value.qoshimcha} />
+                  <Input type="text" defaultValue={value.qoshimcha} />
                 ) : (
                   value.qoshimcha
                 )}
