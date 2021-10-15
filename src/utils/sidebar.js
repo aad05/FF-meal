@@ -66,7 +66,7 @@ export const sidebar = [
   {
     id: 7,
     path: "/diler",
-    titile: "Diler",
+    titile: "Dialer",
     Component: Manzil,
     Icon: hodimlar,
     hiddeh: false,

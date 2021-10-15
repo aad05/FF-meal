@@ -18,13 +18,17 @@ import Delete from "../../Generic/Delete";
 import Edit from "../../Generic/Edit";
 import Cancel from "../../Generic/Cancel";
 import restoreIcon from "../../../assets/icon/restoreIcon.svg";
+import Save from "../../Generic/Save";
 
 export const DND = () => {
   const [baza, setBaza] = useState(data);
   const [restore] = useState(data);
+  const [categoriya, setCategoriya] = useState("");
+  const [title, setTitle] = useState("");
+  const [price, setPrice] = useState("");
+  const [qoshimcha, setQoshimcha] = useState("");
   const [selected, setSelected] = useState(null);
   const [currentCard, setCurrentCard] = useState(null);
-
   const onDelete = (value) => {
     const filtered = baza.filter((data) => data.id !== value.id);
     setBaza(filtered);
@@ -34,6 +38,10 @@ export const DND = () => {
   };
   const onEdit = (value) => {
     setSelected(value.id);
+    setTitle(value.title);
+    setCategoriya(value.categoriya);
+    setPrice(value.price);
+    setQoshimcha(value.qoshimcha);
   };
   const dragStartHandler = (e, value) => {
     setCurrentCard(value);
@@ -67,6 +75,22 @@ export const DND = () => {
       return -1;
     }
   };
+  const onSave = () => {
+    let newData = baza.map((value) =>
+      value.id === selected
+        ? {
+            ...value,
+            title: title,
+            categoriya: categoriya,
+            price: price,
+            qoshimcha: qoshimcha,
+            selected: value.id,
+          }
+        : value
+    );
+    setBaza(newData);
+    setSelected(null);
+  };
   return (
     <Container>
       {baza.length !== 0 ? (
@@ -85,7 +109,11 @@ export const DND = () => {
                 <Image src={value.Img} />
                 <Title left="true">
                   {selected === value.id ? (
-                    <Input type="text" defaultValue={value.title} />
+                    <Input
+                      onChange={(e) => setTitle(e.target.value)}
+                      type="text"
+                      value={title}
+                    />
                   ) : (
                     value.title
                   )}
@@ -93,21 +121,33 @@ export const DND = () => {
               </ImageText>
               <Title>
                 {selected === value.id ? (
-                  <Input type="text" defaultValue={value.categoriya} />
+                  <Input
+                    onChange={(e) => setCategoriya(e.target.value)}
+                    type="text"
+                    value={categoriya}
+                  />
                 ) : (
                   value.categoriya
                 )}
               </Title>
               <Title>
                 {selected === value.id ? (
-                  <Input type="text" defaultValue={value.price} />
+                  <Input
+                    onChange={(e) => setPrice(e.target.value)}
+                    type="text"
+                    value={price}
+                  />
                 ) : (
                   value.price + "UZS"
                 )}
               </Title>
               <Title>
                 {selected === value.id ? (
-                  <Input type="text" defaultValue={value.qoshimcha} />
+                  <Input
+                    type="text"
+                    onChange={(e) => setQoshimcha(e.target.value)}
+                    value={qoshimcha}
+                  />
                 ) : (
                   value.qoshimcha
                 )}
@@ -117,8 +157,13 @@ export const DND = () => {
                   <Delete />
                 </div>
                 {selected === value.id ? (
-                  <div onClick={() => setSelected(null)}>
-                    <Cancel />
+                  <div style={{ display: "flex" }}>
+                    <div onClick={onSave}>
+                      <Save />
+                    </div>
+                    <div onClick={() => setSelected(null)}>
+                      <Cancel />
+                    </div>
                   </div>
                 ) : (
                   <div onClick={() => onEdit(value)}>

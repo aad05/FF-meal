@@ -32,6 +32,7 @@ import Edit from "../../Generic/Edit";
 import Cancel from "../../Generic/Cancel";
 import restoreIcon from "../../../assets/icon/restoreIcon.svg";
 import Maps from "../../Generic/Map";
+import Save from "../../Generic/Save";
 
 export const DND = () => {
   const [baza, setBaza] = useState(data);
@@ -39,6 +40,10 @@ export const DND = () => {
   const [selected, setSelected] = useState(null);
   const [mapselected, setMapSelected] = useState(null);
   const [currentCard, setCurrentCard] = useState(null);
+  const [title, setTitle] = useState("");
+  const [rutitle, setRuTitle] = useState("");
+  const [moljal, setMoljal] = useState("");
+  const [ish, setIsh] = useState("");
 
   const onDelete = (value) => {
     const filtered = baza.filter((data) => data.id !== value.id);
@@ -49,6 +54,10 @@ export const DND = () => {
   };
   const onEdit = (value) => {
     setSelected(value.id);
+    setTitle(value.title);
+    setRuTitle(value.rutitle);
+    setMoljal(value.moljal);
+    setIsh(value.ish);
   };
   const onMap = (value) => {
     setMapSelected(value.id);
@@ -62,6 +71,22 @@ export const DND = () => {
   const dragOverHandler = (e) => {
     e.preventDefault();
     e.target.style.background = "lightgray";
+  };
+  const onSave = () => {
+    let newData = baza.map((value) =>
+      value.id === selected
+        ? {
+            ...value,
+            title: title,
+            rutitle: rutitle,
+            moljal: moljal,
+            ish: ish,
+            selected: value.id,
+          }
+        : value
+    );
+    setBaza(newData);
+    setSelected(null);
   };
   const dropHandler = (e, value) => {
     e.preventDefault();
@@ -102,7 +127,11 @@ export const DND = () => {
               <ImageText>
                 <Title left="true">
                   {selected === value.id ? (
-                    <Input type="text" defaultValue={value.title} />
+                    <Input
+                      onChange={(e) => setTitle(e.target.value)}
+                      type="text"
+                      value={title}
+                    />
                   ) : (
                     value.title
                   )}
@@ -110,21 +139,33 @@ export const DND = () => {
               </ImageText>
               <Title>
                 {selected === value.id ? (
-                  <Input type="text" defaultValue={value.rutitle} />
+                  <Input
+                    onChange={(e) => setRuTitle(e.target.value)}
+                    type="text"
+                    value={rutitle}
+                  />
                 ) : (
                   value.rutitle
                 )}
               </Title>
               <Title>
                 {selected === value.id ? (
-                  <Input type="text" defaultValue={value.moljal} />
+                  <Input
+                    onChange={(e) => setMoljal(e.target.value)}
+                    type="text"
+                    value={moljal}
+                  />
                 ) : (
                   value.moljal
                 )}
               </Title>
               <Title>
                 {selected === value.id ? (
-                  <Input type="text" defaultValue={value.ish} />
+                  <Input
+                    onChange={(e) => setIsh(e.target.value)}
+                    type="text"
+                    value={ish}
+                  />
                 ) : (
                   value.ish
                 )}
@@ -143,8 +184,13 @@ export const DND = () => {
                   <Delete />
                 </div>
                 {selected === value.id ? (
-                  <div onClick={() => setSelected(null)}>
-                    <Cancel />
+                  <div style={{ display: "flex" }}>
+                    <div onClick={onSave}>
+                      <Save />
+                    </div>
+                    <div onClick={() => setSelected(null)}>
+                      <Cancel />
+                    </div>
                   </div>
                 ) : (
                   <div onClick={() => onEdit(value)}>
