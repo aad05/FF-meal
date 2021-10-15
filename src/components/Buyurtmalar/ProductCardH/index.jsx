@@ -19,13 +19,13 @@ import Done from "../../Generic/Done";
 import { BuyurtmaContext } from "../../../context/buyurtmalar";
 
 export const ProductCard = ({ value }) => {
-  const [card, setBuyurtmaData] = BuyurtmaContext();
-
-  const onCancel = (value) => {
-    let filtered = card[value.categoriya].filter(
-      (data) => data.id !== value.id
+  const [buyurtmaData, setBuyurtmaData] = BuyurtmaContext();
+  const onCancel = () => {
+    let filtered = buyurtmaData[value.categoriya].filter(
+      (item) => item.id !== value.id
     );
-    let newData = { ...card, [value.categoriya]: filtered };
+    console.log(filtered);
+    let newData = { ...buyurtmaData, [value.categoriya]: filtered };
     setBuyurtmaData(newData);
   };
   return (
@@ -97,7 +97,7 @@ export const ProductCard = ({ value }) => {
         </WrapperInSide.Bottom>
       </Wrapper>
       <Meghts>
-        <div onClick={() => onCancel(value)}>
+        <div onClick={onCancel}>
           <Cancel />
         </div>
         <div style={{ paddingTop: "50px" }}>

@@ -240,3 +240,12 @@ export const FooterWrapper = styled.div`
   justify-content: space-around;
   width: 100%;
 `;
+export const Modal = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 500px;
+  height: 100vh;
+  background-color: red;
+  z-index: 2;
+`;
