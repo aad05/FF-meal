@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Container,
   Wrapper,
@@ -15,7 +15,13 @@ import ProductCard from "../ProductCard";
 import { BuyurtmaContext } from "../../../context/buyurtmalar";
 import restoreIcon from "../../../assets/icon/restoreIcon.svg";
 export const Body = () => {
-  const [card] = BuyurtmaContext();
+  const [card, setBuyurtmaData] = BuyurtmaContext();
+  const [data] = useState(card);
+  console.log(card);
+  const restore = () => {
+    setBuyurtmaData(data);
+  };
+  console.log(data);
   return (
     <RestoreWrapper>
       <Container>
@@ -83,7 +89,7 @@ export const Body = () => {
             <ProductCard key={value.id} value={value} />
           ))}
           {card.jonatilganlar.length === 0 ? (
-            <ButtonAll>
+            <ButtonAll onClick={restore}>
               <RestoreButton>
                 <Restore className="btn-pill">
                   <span>
@@ -109,7 +115,7 @@ export const Body = () => {
             <ProductCard key={value.id} value={value} />
           ))}
           {card.yopilgan.length === 0 ? (
-            <ButtonAll>
+            <ButtonAll onClick={restore}>
               <RestoreButton>
                 <Restore className="btn-pill">
                   <span>

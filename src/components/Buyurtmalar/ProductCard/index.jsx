@@ -28,6 +28,7 @@ export const ProductCard = ({ value }) => {
     let newData = { ...card, [value.categoriya]: filtered };
     setBuyurtmaData(newData);
   };
+  const onDone = (value) => {};
   return (
     <Container>
       <Wrapper align>
@@ -78,7 +79,7 @@ export const ProductCard = ({ value }) => {
               <Cancel />
             </div>
             <br />
-            <div>
+            <div onClick={() => onDone(value)}>
               <Done />
             </div>
           </GenericWrapper>
