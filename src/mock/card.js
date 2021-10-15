@@ -1,4 +1,4 @@
-export const card = {
+export var card = {
   yangi: [
     {
       id: 1,

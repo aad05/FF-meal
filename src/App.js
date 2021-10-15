@@ -8,7 +8,7 @@ export const App = () => {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-    }, 8000);
+    }, 8);
   }, []);
   return (
     <div>
