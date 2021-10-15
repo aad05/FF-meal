@@ -16,10 +16,14 @@ import Delete from "../../Generic/Delete";
 import Edit from "../../Generic/Edit";
 import Cancel from "../../Generic/Cancel";
 import restoreIcon from "../../../assets/icon/restoreIcon.svg";
+import Save from "../../Generic/Save";
 
 export const DND = () => {
   const [baza, setBaza] = useState(data);
   const [restore] = useState(data);
+  const [main, setMain] = useState("");
+  const [rutitle, setRuTitle] = useState("");
+  const [title, setTitle] = useState("");
   const [selected, setSelected] = useState(null);
   const [currentCard, setCurrentCard] = useState(null);
 
@@ -32,6 +36,9 @@ export const DND = () => {
   };
   const onEdit = (value) => {
     setSelected(value.id);
+    setMain(value.main);
+    setRuTitle(value.rutitle);
+    setTitle(value.rutitle);
   };
   const dragStartHandler = (e, value) => {
     setCurrentCard(value);
@@ -65,6 +72,21 @@ export const DND = () => {
       return -1;
     }
   };
+  const onSave = () => {
+    let newData = baza.map((value) =>
+      value.id === selected
+        ? {
+            ...value,
+            title: title,
+            rutitle: rutitle,
+            main: main,
+            selected: value.id,
+          }
+        : value
+    );
+    setBaza(newData);
+    setSelected(null);
+  };
   return (
     <Container>
       {baza.length !== 0 ? (
@@ -79,26 +101,35 @@ export const DND = () => {
             key={value.id}
           >
             <Dates>
-              {/* First */}
               <Title left="true">
                 {selected === value.id ? (
-                  <Input type="text" defaultValue={value.title} />
+                  <Input
+                    onChange={(e) => setTitle(e.target.value)}
+                    type="text"
+                    value={title}
+                  />
                 ) : (
                   value.title + " (uz)"
                 )}
               </Title>
-              {/* Second */}
               <Title>
                 {selected === value.id ? (
-                  <Input type="text" defaultValue={value.rutitle} />
+                  <Input
+                    onChange={(e) => setRuTitle(e.target.value)}
+                    type="text"
+                    value={rutitle}
+                  />
                 ) : (
                   value.rutitle + " (ru)"
                 )}
               </Title>
-              {/* Third */}
               <Title>
                 {selected === value.id ? (
-                  <Input type="text" defaultValue={value.main} />
+                  <Input
+                    onChange={(e) => setMain(e.target.value)}
+                    type="text"
+                    value={main}
+                  />
                 ) : (
                   value.main
                 )}
@@ -108,8 +139,13 @@ export const DND = () => {
                   <Delete />
                 </div>
                 {selected === value.id ? (
-                  <div onClick={() => setSelected(null)}>
-                    <Cancel />
+                  <div style={{ display: "flex" }}>
+                    <div onClick={onSave}>
+                      <Save />
+                    </div>
+                    <div onClick={() => setSelected(null)}>
+                      <Cancel />
+                    </div>
                   </div>
                 ) : (
                   <div onClick={() => onEdit(value)}>

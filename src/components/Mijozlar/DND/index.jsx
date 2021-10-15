@@ -20,6 +20,7 @@ import Cancel from "../../Generic/Cancel";
 import restoreIcon from "../../../assets/icon/restoreIcon.svg";
 import Agree from "../../Generic/Agree";
 import Disagree from "../../Generic/Disagree";
+import Save from "../../Generic/Save";
 
 export const DND = () => {
   const [baza, setBaza] = useState(data);
@@ -28,6 +29,9 @@ export const DND = () => {
   const [userselected, setUserSelected] = useState(null);
   const [currentCard, setCurrentCard] = useState(null);
   const [user, setUser] = useState(true);
+  const [name, setName] = useState("");
+  const [number, setNumber] = useState("");
+  const [order, setOrder] = useState("");
   const onDelete = (value) => {
     const filtered = baza.filter((data) => data.id !== value.id);
     setBaza(filtered);
@@ -41,6 +45,9 @@ export const DND = () => {
   };
   const onEdit = (value) => {
     setSelected(value.id);
+    setOrder(value.order);
+    setNumber(value.number);
+    setName(value.name);
   };
   const dragStartHandler = (e, value) => {
     setCurrentCard(value);
@@ -78,6 +85,21 @@ export const DND = () => {
     setUserSelected(value.id);
     setUser("Active");
   };
+  const onSave = () => {
+    let newData = baza.map((value) =>
+      value.id === selected
+        ? {
+            ...value,
+            name: name,
+            number: number,
+            order: order,
+            selected: value.id,
+          }
+        : value
+    );
+    setBaza(newData);
+    setSelected(null);
+  };
   return (
     <Container>
       {baza.length !== 0 ? (
@@ -95,7 +117,11 @@ export const DND = () => {
               <ImageText>
                 <Title left="true">
                   {selected === value.id ? (
-                    <Input type="text" defaultValue={value.name} />
+                    <Input
+                      onChange={(e) => setName(e.target.value)}
+                      type="text"
+                      value={name}
+                    />
                   ) : (
                     value.name
                   )}
@@ -103,14 +129,22 @@ export const DND = () => {
               </ImageText>
               <Title>
                 {selected === value.id ? (
-                  <Input type="text" defaultValue={value.number} />
+                  <Input
+                    onChange={(e) => setNumber(e.target.value)}
+                    type="text"
+                    value={number}
+                  />
                 ) : (
                   "+998 " + value.number
                 )}
               </Title>
               <Title>
                 {selected === value.id ? (
-                  <Input type="text" defaultValue={value.order} />
+                  <Input
+                    onChange={(e) => setOrder(e.target.value)}
+                    type="text"
+                    value={order}
+                  />
                 ) : (
                   value.order
                 )}
@@ -134,8 +168,13 @@ export const DND = () => {
                   <Delete />
                 </div>
                 {selected === value.id ? (
-                  <div onClick={() => setSelected(null)}>
-                    <Cancel />
+                  <div style={{ display: "flex" }}>
+                    <div onClick={onSave}>
+                      <Save />
+                    </div>
+                    <div onClick={() => setSelected(null)}>
+                      <Cancel />
+                    </div>
                   </div>
                 ) : (
                   <div onClick={() => onEdit(value)}>
