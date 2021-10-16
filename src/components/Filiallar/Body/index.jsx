@@ -1,11 +1,11 @@
 import React from "react";
 import DNDNavbar from "../DNDNavbar";
 import DND from "../DND";
-export const Body = () => {
+export const Body = ({ showModal, onModalCancel }) => {
   return (
     <div style={{ marginBottom: "30px" }}>
       <DNDNavbar />
-      <DND />
+      <DND showModal={showModal} onModalCancel={onModalCancel} />
     </div>
   );
 };

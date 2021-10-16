@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ReactComponent as plus } from "../../../assets/icon/plus.svg";
+import { ReactComponent as shape } from "../../../assets/icon/shape.svg";
 import { ReactComponent as charts } from "../../../assets/icon/chart.svg";
 import { ReactComponent as cards } from "../../../assets/icon/cards.svg";
 import { ReactComponent as search } from "../../../assets/icon/search.svg";
@@ -19,7 +19,7 @@ export const Wrapper = styled.div`
   width: ${({ align }) => (align ? "250px" : "100%")};
   border: 1px solid #e5e5e5;
 `;
-export const Plus = styled(plus)`
+export const Plus = styled(shape)`
   padding: 11px;
   background: #20d472;
   min-width: 36px;

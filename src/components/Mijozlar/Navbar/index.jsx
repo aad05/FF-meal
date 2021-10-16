@@ -10,12 +10,12 @@ import {
 } from "./style";
 import Filter from "../../Generic/Filter";
 
-const Navbar = () => {
+const Navbar = (props) => {
   return (
     <Container>
       <Wrapper width="true">
-        <Plus />
-        <Title>Yangi maxsulot qo'shish</Title>
+        <Plus onClick={() => props.plusClicked()} />
+        <Title>Yangi mijoz qo'shish</Title>
       </Wrapper>
       <Wrapper>
         <InputWrapper>

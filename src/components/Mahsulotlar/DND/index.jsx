@@ -12,6 +12,12 @@ import {
   Restore,
   RestoreIcon,
   Input,
+  Modal,
+  ButtonX,
+  ButtunInput,
+  Inputs,
+  WrapperIcons,
+  Icons,
 } from "./style";
 import { data } from "../../../mock/mahsulotlar";
 import Delete from "../../Generic/Delete";
@@ -19,8 +25,13 @@ import Edit from "../../Generic/Edit";
 import Cancel from "../../Generic/Cancel";
 import restoreIcon from "../../../assets/icon/restoreIcon.svg";
 import Save from "../../Generic/Save";
+import basket from "../../../assets/icon/basket.svg";
+import kategro from "../../../assets/icon/kategro.svg";
+import ssss from "../../../assets/icon/price.svg";
+import qoshim from "../../../assets/icon/qoshim.svg";
+import lavash from "../../../assets/img/lavash-sirom.png";
 
-export const DND = () => {
+export const DND = (props) => {
   const [baza, setBaza] = useState(data);
   const [restore] = useState(data);
   const [categoriya, setCategoriya] = useState("");
@@ -29,6 +40,11 @@ export const DND = () => {
   const [qoshimcha, setQoshimcha] = useState("");
   const [selected, setSelected] = useState(null);
   const [currentCard, setCurrentCard] = useState(null);
+  const [newCategoriya, setNewCategoriya] = useState("");
+  const [newTitle, setNewTitle] = useState("");
+  const [newPrice, setNewPrice] = useState("");
+  const [newQoshimcha, setNewQoshimcha] = useState("");
+
   const onDelete = (value) => {
     const filtered = baza.filter((data) => data.id !== value.id);
     setBaza(filtered);
@@ -91,102 +107,178 @@ export const DND = () => {
     setBaza(newData);
     setSelected(null);
   };
+  const onAdd = () => {
+    const newBaza = {
+      id: Math.random() * 30,
+      title: newTitle,
+      categoriya: newCategoriya,
+      price: newPrice,
+      qoshimcha: newQoshimcha,
+      Img: lavash,
+    };
+    const clone = baza;
+    clone.push(newBaza);
+    setBaza(clone);
+    props.onModalCancel();
+    setNewCategoriya("");
+    setNewPrice("");
+    setNewQoshimcha("");
+    setNewTitle("");
+  };
   return (
-    <Container>
-      {baza.length !== 0 ? (
-        baza.sort(sortCards).map((value) => (
-          <Wrapper
-            onDragStart={(e) => dragStartHandler(e, value)}
-            onDragLeave={(e) => dragEndHandler(e)}
-            onDragEnd={(e) => dragEndHandler(e)}
-            onDragOver={(e) => dragOverHandler(e)}
-            onDrop={(e) => dropHandler(e, value)}
-            draggable={true}
-            key={value.id}
-          >
-            <Dates>
-              <ImageText>
-                <Image src={value.Img} />
-                <Title left="true">
+    <>
+      <Container>
+        {baza.length !== 0 ? (
+          baza.sort(sortCards).map((value) => (
+            <Wrapper
+              onDragStart={(e) => dragStartHandler(e, value)}
+              onDragLeave={(e) => dragEndHandler(e)}
+              onDragEnd={(e) => dragEndHandler(e)}
+              onDragOver={(e) => dragOverHandler(e)}
+              onDrop={(e) => dropHandler(e, value)}
+              draggable={true}
+              key={value.id}
+            >
+              <Dates>
+                <ImageText>
+                  <Image src={value.Img} />
+                  <Title left="true">
+                    {selected === value.id ? (
+                      <Input
+                        onChange={(e) => setTitle(e.target.value)}
+                        type="text"
+                        value={title}
+                      />
+                    ) : (
+                      value.title
+                    )}
+                  </Title>
+                </ImageText>
+                <Title>
                   {selected === value.id ? (
                     <Input
-                      onChange={(e) => setTitle(e.target.value)}
+                      onChange={(e) => setCategoriya(e.target.value)}
                       type="text"
-                      value={title}
+                      value={categoriya}
                     />
                   ) : (
-                    value.title
+                    value.categoriya
                   )}
                 </Title>
-              </ImageText>
-              <Title>
-                {selected === value.id ? (
-                  <Input
-                    onChange={(e) => setCategoriya(e.target.value)}
-                    type="text"
-                    value={categoriya}
-                  />
-                ) : (
-                  value.categoriya
-                )}
-              </Title>
-              <Title>
-                {selected === value.id ? (
-                  <Input
-                    onChange={(e) => setPrice(e.target.value)}
-                    type="text"
-                    value={price}
-                  />
-                ) : (
-                  value.price + "UZS"
-                )}
-              </Title>
-              <Title>
-                {selected === value.id ? (
-                  <Input
-                    type="text"
-                    onChange={(e) => setQoshimcha(e.target.value)}
-                    value={qoshimcha}
-                  />
-                ) : (
-                  value.qoshimcha
-                )}
-              </Title>
-              <Action>
-                <div onClick={() => onDelete(value)}>
-                  <Delete />
-                </div>
-                {selected === value.id ? (
-                  <div style={{ display: "flex" }}>
-                    <div onClick={onSave}>
-                      <Save />
-                    </div>
-                    <div onClick={() => setSelected(null)}>
-                      <Cancel />
-                    </div>
+                <Title>
+                  {selected === value.id ? (
+                    <Input
+                      onChange={(e) => setPrice(e.target.value)}
+                      type="text"
+                      value={price}
+                    />
+                  ) : (
+                    value.price + "UZS"
+                  )}
+                </Title>
+                <Title>
+                  {selected === value.id ? (
+                    <Input
+                      type="text"
+                      onChange={(e) => setQoshimcha(e.target.value)}
+                      value={qoshimcha}
+                    />
+                  ) : (
+                    value.qoshimcha
+                  )}
+                </Title>
+                <Action>
+                  <div onClick={() => onDelete(value)}>
+                    <Delete />
                   </div>
-                ) : (
-                  <div onClick={() => onEdit(value)}>
-                    <Edit />
-                  </div>
-                )}
-              </Action>
-            </Dates>
-          </Wrapper>
-        ))
-      ) : (
-        <ButtonAll onClick={onRestore}>
-          <RestoreButton>
-            <Restore className="btn-pill">
-              <span>
-                <RestoreIcon src={restoreIcon} />
-                Restore
-              </span>
-            </Restore>
-          </RestoreButton>
-        </ButtonAll>
+                  {selected === value.id ? (
+                    <div style={{ display: "flex" }}>
+                      <div onClick={onSave}>
+                        <Save />
+                      </div>
+                      <div onClick={() => setSelected(null)}>
+                        <Cancel />
+                      </div>
+                    </div>
+                  ) : (
+                    <div onClick={() => onEdit(value)}>
+                      <Edit />
+                    </div>
+                  )}
+                </Action>
+              </Dates>
+            </Wrapper>
+          ))
+        ) : (
+          <ButtonAll onClick={onRestore}>
+            <RestoreButton>
+              <Restore className="btn-pill">
+                <span>
+                  <RestoreIcon src={restoreIcon} />
+                  Restore
+                </span>
+              </Restore>
+            </RestoreButton>
+          </ButtonAll>
+        )}
+      </Container>
+      {props.showModal && (
+        <Modal>
+          <ButtonX onClick={() => props.onModalCancel()}>X</ButtonX>
+          <ButtunInput>
+            <WrapperIcons>
+              <Inputs
+                onChange={(e) => setNewTitle(e.target.value)}
+                value={newTitle}
+                placeholder="Maxsulotlarni kiritin..."
+              />
+              <Icons src={basket} />
+            </WrapperIcons>
+            <WrapperIcons>
+              <Inputs
+                onChange={(e) => setNewCategoriya(e.target.value)}
+                value={newCategoriya}
+                placeholder="Kategoriyani kiritin..."
+              />
+              <Icons src={kategro} />
+            </WrapperIcons>
+            <WrapperIcons>
+              <Inputs
+                onChange={(e) => setNewPrice(e.target.value)}
+                value={newPrice}
+                placeholder="Narxni kiritin..."
+              />
+              <Icons src={ssss} />
+            </WrapperIcons>
+            <WrapperIcons>
+              <Inputs
+                onChange={(e) => setNewQoshimcha(e.target.value)}
+                value={newQoshimcha}
+                placeholder="Qoshimcha"
+              />
+              <Icons src={qoshim} />
+            </WrapperIcons>
+          </ButtunInput>
+          {newTitle.length !== 0 &&
+          newPrice.length !== 0 &&
+          newQoshimcha.length !== 0 &&
+          newCategoriya.length !== 0 ? (
+            <ButtonAll onClick={onAdd} width="true">
+              <RestoreButton>
+                <Restore width="true" className="btn-pill">
+                  <span>
+                    <RestoreIcon src={restoreIcon} />
+                    Restore
+                  </span>
+                </Restore>
+              </RestoreButton>
+            </ButtonAll>
+          ) : (
+            ""
+          )}
+        </Modal>
       )}
-    </Container>
+    </>
   );
 };
 export default DND;

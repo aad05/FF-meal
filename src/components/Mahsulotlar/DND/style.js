@@ -1,5 +1,4 @@
 import styled from "styled-components";
-
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -52,13 +51,15 @@ export const ButtonAll = styled.div`
   display: flex;
   justify-content: center;
   margin-bottom: 50px;
+  margin-top: ${({ width }) => width && "50px"};
 `;
 export const RestoreWrapper = styled.div`
   display: flex;
   flex-direction: column;
 `;
 export const Restore = styled.div`
-  width: 100%;
+  width: ${({ width }) => (width ? "300px" : "100%")};
+  border-radius: ${({ width }) => width && "25px"};
   height: 100%;
   font-size: 25px;
   display: flex;
@@ -173,6 +174,7 @@ export const RestoreButton = styled.div`
     }
   }
 `;
+
 export const Input = styled.input`
   outline: none;
   font-size: 15px;
@@ -181,4 +183,61 @@ export const Input = styled.input`
   border-radius: 24px;
   border: 1px solid #fcb600;
   padding-left: 15px;
+`;
+
+export const Modal = styled.div`
+  position: sticky;
+  width: 100%;
+  height: 300px;
+  bottom: 0;
+  background-color: #fff;
+`;
+export const ButtonX = styled.div`
+  position: absolute;
+  top: -30px;
+  left: 0;
+  width: 50px;
+  height: 20px;
+  background-color: #fcb600;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  cursor: pointer;
+`;
+export const ButtunInput = styled.div`
+  width: 80%;
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+  justify-content: space-between;
+  padding-top: 50px;
+`;
+export const Inputs = styled.input`
+  width: 300px;
+  height: 50px;
+  outline: none;
+  border: 1px solid #000;
+  font-size: 20px;
+  padding-left: 50px;
+  border-radius: 12px;
+`;
+export const ButtonAdd = styled.div`
+  width: 300px;
+  margin: auto;
+  margin-top: 50px;
+  height: 50px;
+  background-color: #000;
+`;
+export const Icons = styled.img`
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: 9px;
+  left: 0;
+  margin-left: 10px;
+`;
+export const WrapperIcons = styled.div`
+  position: relative;
 `;

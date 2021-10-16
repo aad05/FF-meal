@@ -3,12 +3,14 @@ import DNDNavbar from "../DNDNavbar";
 import DND from "../DND";
 import DND2 from "../DND2";
 import Else from "../Else";
-export const Body = () => {
+
+export const Body = ({ showModal, onModalCancel }) => {
   const [condition, setCondition] = useState(true);
+
   return (
     <div style={{ marginBottom: "30px" }}>
       <DNDNavbar />
-      <DND />
+      <DND showModal={showModal} onModalCancel={onModalCancel} />
       {condition ? (
         <div onClick={() => setCondition(false)}>
           <Else />
