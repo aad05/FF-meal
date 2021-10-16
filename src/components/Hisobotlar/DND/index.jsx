@@ -141,16 +141,6 @@ export const DND = (props) => {
             </ButtonAll>
           )}
         </Container>
-        <ButtonAll onClick={onRestore}>
-          <RestoreButton>
-            <Restore className="btn-pill">
-              <span>
-                <RestoreIcon src={restoreIcon} />
-                Add
-              </span>
-            </Restore>
-          </RestoreButton>
-        </ButtonAll>
       )}
     </>
   );
