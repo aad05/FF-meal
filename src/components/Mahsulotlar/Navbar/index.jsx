@@ -10,11 +10,11 @@ import {
 } from "./style";
 import Filter from "../../Generic/Filter";
 
-const Navbar = () => {
+const Navbar = (props) => {
   return (
     <Container>
       <Wrapper width="true">
-        <Plus />
+        <Plus onClick={() => props.plusClicked()} />
         <Title>Yangi maxsulot qo'shish</Title>
       </Wrapper>
       <Wrapper>

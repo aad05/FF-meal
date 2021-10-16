@@ -9,12 +9,12 @@ import {
   SearchIcon,
 } from "./style";
 
-const Navbar = () => {
+const Navbar = (props) => {
   return (
     <Container>
       <Wrapper width="true">
-        <Plus />
-        <Title>Yangi maxsulot qo'shish</Title>
+        <Plus onClick={() => props.plusClicked()} />
+        <Title>Yangi kategoriya qo'shish</Title>
       </Wrapper>
       <Wrapper>
         <InputWrapper>

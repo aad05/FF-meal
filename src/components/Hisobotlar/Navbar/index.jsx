@@ -21,7 +21,7 @@ const Navbar = (props) => {
     <Container>
       <Wrapper align="true" order={"first"}>
         <Plus />
-        <Title>Yangi buyurtma qo'shish</Title>
+        <Title>Malumotlarni Yangilash</Title>
       </Wrapper>
       <Wrapper order={"second"}>
         <InputWrapper>

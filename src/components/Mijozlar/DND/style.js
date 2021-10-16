@@ -189,3 +189,59 @@ export const Input = styled.input`
   border: 1px solid #fcb600;
   padding-left: 15px;
 `;
+export const Modal = styled.div`
+  position: sticky;
+  width: 100%;
+  height: 400px;
+  bottom: 0;
+  background-color: #fff;
+`;
+export const ButtonX = styled.div`
+  position: absolute;
+  top: -30px;
+  left: 0;
+  width: 50px;
+  height: 20px;
+  background-color: #fcb600;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  cursor: pointer;
+`;
+export const ButtunInput = styled.div`
+  width: 80%;
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+  justify-content: space-between;
+  padding-top: 50px;
+`;
+export const Inputs = styled.input`
+  width: 300px;
+  height: 50px;
+  outline: none;
+  border: 1px solid #000;
+  font-size: 20px;
+  padding-left: 50px;
+  border-radius: 12px;
+`;
+export const ButtonAdd = styled.div`
+  width: 300px;
+  margin: auto;
+  margin-top: 50px;
+  height: 50px;
+  background-color: #000;
+`;
+export const Icons = styled.img`
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: 9px;
+  left: 0;
+  margin-left: 10px;
+`;
+export const WrapperIcons = styled.div`
+  position: relative;
+`;

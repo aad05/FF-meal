@@ -100,10 +100,6 @@ export const Restore = styled.div`
   cursor: pointer;
   background-color: #fcb600;
 `;
-// export const RestoreButton = styled.div`
-//   display: flex;
-//   justify-content: center;
-// `;
 export const RestoreIcon = styled.img`
   width: 25px;
   height: 25px;
