@@ -114,7 +114,7 @@ export const DND = () => {
             <Restore className="btn-pill">
               <span>
                 <RestoreIcon src={restoreIcon} />
-                Restore
+                Add
               </span>
             </Restore>
           </RestoreButton>

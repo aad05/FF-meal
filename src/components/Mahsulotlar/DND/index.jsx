@@ -268,7 +268,7 @@ export const DND = (props) => {
                 <Restore width="true" className="btn-pill">
                   <span>
                     <RestoreIcon src={restoreIcon} />
-                    Restore
+                    Add
                   </span>
                 </Restore>
               </RestoreButton>
