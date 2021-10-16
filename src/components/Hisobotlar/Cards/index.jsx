@@ -1,10 +1,10 @@
 import React from "react";
 import DND from "../DND";
 import DNDnavbar from "../DNDNavbar";
-export const Cards = () => {
+export const Cards = ({ refresh }) => {
   return (
     <div>
-      <DNDnavbar /> <DND />
+      <DNDnavbar /> <DND refresh={refresh} />
     </div>
   );
 };

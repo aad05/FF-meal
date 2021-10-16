@@ -20,7 +20,7 @@ const Navbar = (props) => {
   return (
     <Container>
       <Wrapper align="true" order={"first"}>
-        <Plus />
+        <Plus onClick={() => props.onRefresh()} />
         <Title>Malumotlarni Yangilash</Title>
       </Wrapper>
       <Wrapper order={"second"}>

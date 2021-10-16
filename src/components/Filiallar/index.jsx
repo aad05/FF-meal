@@ -4,7 +4,7 @@ import Navbar from "./Navbar";
 import Body from "./Body";
 export const Filiallar = () => {
   const [showModal, setShowModal] = useState(false);
-
+  console.log(showModal);
   return (
     <Container>
       <Navbar plusClicked={() => setShowModal(true)} />
