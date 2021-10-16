@@ -204,3 +204,10 @@ export const Payme = styled.div`
   border-radius: 50%;
   margin-right: 10px;
 `;
+export const Wrappers = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+`;

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Container,
   Dates,
@@ -12,12 +12,14 @@ import {
   Column,
   Info,
   Payme,
+  Wrappers,
 } from "./style";
 import { data } from "../../../mock/xisobot";
 import Delete from "../../Generic/Delete";
 import restoreIcon from "../../../assets/icon/restoreIcon.svg";
+import { BoxesLoader } from "react-awesome-loaders";
 
-export const DND = () => {
+export const DND = (props) => {
   const [baza, setBaza] = useState(data);
   const [restore] = useState(data);
   const [currentCard, setCurrentCard] = useState(null);
@@ -61,54 +63,84 @@ export const DND = () => {
       return -1;
     }
   };
+  const [loading, setLoading] = useState(false);
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+  }, []);
   return (
-    <Container>
-      {baza.length !== 0 ? (
-        baza.sort(sortCards).map((value) => (
-          <Wrapper
-            onDragStart={(e) => dragStartHandler(e, value)}
-            onDragLeave={(e) => dragEndHandler(e)}
-            onDragEnd={(e) => dragEndHandler(e)}
-            onDragOver={(e) => dragOverHandler(e)}
-            onDrop={(e) => dropHandler(e, value)}
-            draggable={true}
-            key={value.id}
-          >
-            <Dates>
-              <Title left="true">
-                <Column location="true">{value.location}</Column>
-                <Column>{value.operator}</Column>
-              </Title>
-              <Title>
-                <Column location="true">{value.orderprice} UZS</Column>
-                <Info>
-                  <Payme />
-                  <Column>Payme</Column>
-                </Info>
-              </Title>
-              <Title left="true">
-                <Column location="true">{value.user}</Column>
-                <Column>{value.phone}</Column>
-              </Title>
-              <Title left="true">
-                <Column location="true">
-                  {value.sana.getDay()}.{value.sana.getMonth()}.
-                  {value.sana.getFullYear()}
-                </Column>
-                <Column>
-                  {value.time.getHours()}:{value.time.getMinutes()}:
-                  {value.time.getSeconds()}
-                </Column>
-              </Title>
-              <Action>
-                <div onClick={() => onDelete(value)}>
-                  <Delete />
-                </div>
-              </Action>
-            </Dates>
-          </Wrapper>
-        ))
+    <>
+      {props.refresh && loading ? (
+        <Wrappers>
+          <BoxesLoader
+            boxColor={"#6366F1"}
+            style={{ marginBottom: "20px" }}
+            desktopSize={"128px"}
+            mobileSize={"80px"}
+          />
+        </Wrappers>
       ) : (
+        <Container>
+          {baza.length !== 0 ? (
+            baza.sort(sortCards).map((value) => (
+              <Wrapper
+                onDragStart={(e) => dragStartHandler(e, value)}
+                onDragLeave={(e) => dragEndHandler(e)}
+                onDragEnd={(e) => dragEndHandler(e)}
+                onDragOver={(e) => dragOverHandler(e)}
+                onDrop={(e) => dropHandler(e, value)}
+                draggable={true}
+                key={value.id}
+              >
+                <Dates>
+                  <Title left="true">
+                    <Column location="true">{value.location}</Column>
+                    <Column>{value.operator}</Column>
+                  </Title>
+                  <Title>
+                    <Column location="true">{value.orderprice} UZS</Column>
+                    <Info>
+                      <Payme />
+                      <Column>Payme</Column>
+                    </Info>
+                  </Title>
+                  <Title left="true">
+                    <Column location="true">{value.user}</Column>
+                    <Column>{value.phone}</Column>
+                  </Title>
+                  <Title left="true">
+                    <Column location="true">
+                      {value.sana.getDay()}.{value.sana.getMonth()}.
+                      {value.sana.getFullYear()}
+                    </Column>
+                    <Column>
+                      {value.time.getHours()}:{value.time.getMinutes()}:
+                      {value.time.getSeconds()}
+                    </Column>
+                  </Title>
+                  <Action>
+                    <div onClick={() => onDelete(value)}>
+                      <Delete />
+                    </div>
+                  </Action>
+                </Dates>
+              </Wrapper>
+            ))
+          ) : (
+            <ButtonAll onClick={onRestore}>
+              <RestoreButton>
+                <Restore className="btn-pill">
+                  <span>
+                    <RestoreIcon src={restoreIcon} />
+                    Restore
+                  </span>
+                </Restore>
+              </RestoreButton>
+            </ButtonAll>
+          )}
+        </Container>
         <ButtonAll onClick={onRestore}>
           <RestoreButton>
             <Restore className="btn-pill">
@@ -120,7 +152,7 @@ export const DND = () => {
           </RestoreButton>
         </ButtonAll>
       )}
-    </Container>
+    </>
   );
 };
 export default DND;

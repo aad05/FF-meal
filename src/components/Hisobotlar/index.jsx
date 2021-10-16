@@ -5,10 +5,19 @@ import { Container } from "./style";
 
 const Hisobot = () => {
   const [active, setActive] = useState(true);
+  const [refresh, setRefresh] = useState(false);
+  console.log(refresh);
   return (
     <Container>
-      <Navbar onClick={(state) => setActive(state)} />
-      <Body active={active} />
+      <Navbar
+        onRefresh={() => setRefresh(true)}
+        onClick={(state) => setActive(state)}
+      />
+      <Body
+        cancel={() => setRefresh(!refresh)}
+        refresh={refresh}
+        active={active}
+      />
     </Container>
   );
 };
