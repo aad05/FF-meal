@@ -14,6 +14,7 @@ import {
 import ProductCard from "../ProductCard";
 import { BuyurtmaContext } from "../../../context/buyurtmalar";
 import restoreIcon from "../../../assets/icon/restoreIcon.svg";
+import Fade from "react-reveal/Fade";
 export const Body = () => {
   const [card, setBuyurtmaData] = BuyurtmaContext();
   const [data] = useState(card);
@@ -34,7 +35,9 @@ export const Body = () => {
             <Dashboar.Price>12.300.000 UZS</Dashboar.Price>
           </Dashboar>
           {card.yangi.map((value) => (
-            <ProductCard key={value.id} value={value} />
+            <Fade duration={2000} left>
+              <ProductCard key={value.id} value={value} />
+            </Fade>
           ))}
           {card.yangi.length === 0 ? (
             <ButtonAll>
@@ -60,7 +63,9 @@ export const Body = () => {
             <Dashboar.Price>12.300.000 UZS</Dashboar.Price>
           </Dashboar>
           {card.qabul.map((value) => (
-            <ProductCard key={value.id} value={value} />
+            <Fade left>
+              <ProductCard key={value.id} value={value} />
+            </Fade>
           ))}
           {card.qabul.length === 0 ? (
             <ButtonAll>
@@ -86,7 +91,9 @@ export const Body = () => {
             <Dashboar.Price>12.300.000 UZS</Dashboar.Price>
           </Dashboar>
           {card.jonatilganlar.map((value) => (
-            <ProductCard key={value.id} value={value} />
+            <Fade right>
+              <ProductCard key={value.id} value={value} />
+            </Fade>
           ))}
           {card.jonatilganlar.length === 0 ? (
             <ButtonAll onClick={restore}>
@@ -112,7 +119,9 @@ export const Body = () => {
             <Dashboar.Price>12.300.000 UZS</Dashboar.Price>
           </Dashboar>
           {card.yopilgan.map((value) => (
-            <ProductCard key={value.id} value={value} />
+            <Fade right duration={2000}>
+              <ProductCard key={value.id} value={value} />
+            </Fade>
           ))}
           {card.yopilgan.length === 0 ? (
             <ButtonAll onClick={restore}>

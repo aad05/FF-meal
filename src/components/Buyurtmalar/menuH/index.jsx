@@ -10,6 +10,7 @@ import ProductCardH from "../ProductCardH";
 import { BuyurtmaContext } from "../../../context/buyurtmalar";
 import restoreIcon from "../../../assets/icon/restoreIcon.svg";
 import { useState } from "react";
+import Fade from "react-reveal/Fade";
 
 export const MenuH = ({ productType }) => {
   const [buyurtmaData, setBuyurtmaData] = BuyurtmaContext();
@@ -20,7 +21,9 @@ export const MenuH = ({ productType }) => {
   return (
     <Container>
       {buyurtmaData[productType].map((value) => (
-        <ProductCardH key={value.id} value={value} />
+        <Fade top>
+          <ProductCardH key={value.id} value={value} />
+        </Fade>
       ))}
       {buyurtmaData[productType].length === 0 ? (
         <ButtonAll onClick={restore}>
