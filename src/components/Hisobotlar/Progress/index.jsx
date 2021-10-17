@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Container,
   Title,
@@ -11,20 +11,27 @@ import {
   Payme,
   Left,
   Total,
+  Buton,
 } from "./style";
-import Calendar from "../../Generic/Calendar";
+import Calendar from "react-calendar";
+import "react-calendar/dist/Calendar.css";
+import Calendars from "../../Generic/Calendar";
 import ChildProgress from "../ChildProgress";
 import PaymeICon from "../Payme";
 import TarminalIcon from "../Terminal";
 
 export const Progress = () => {
+  const [value, onChange] = useState(new Date());
+  const [position, setPosition] = useState("none");
   return (
     <Container>
       <Wraper>
         <Top>
           <Title>Tolov Turlari | Uchqo'rg'on</Title>
           <Title left="true">19.02.2020</Title>
-          <Calendar />
+          <div onClick={() => setPosition("flex")}>
+            <Calendars />
+          </div>
         </Top>
         <WrapperProgress>
           <TitleWrapper>
@@ -51,6 +58,17 @@ export const Progress = () => {
           <Total>3,740,000 UZS</Total>
         </WrapperProgress>
       </Wraper>
+      <div
+        style={{
+          display: position,
+          position: "absolute",
+          top: "70px",
+          right: "30px",
+        }}
+      >
+        <Calendar width="200" onChange={onChange} value={value} />
+        <Buton onClick={() => setPosition("none")}>X</Buton>
+      </div>
     </Container>
   );
 };
