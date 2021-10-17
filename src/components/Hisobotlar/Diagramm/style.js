@@ -1,5 +1,6 @@
 import styled from "styled-components";
 export const Container = styled.div`
+  position: relative;
   display: flex;
   margin: 10px;
 `;
@@ -29,4 +30,18 @@ export const Title = styled.div`
   color: #2d3a45;
   margin-left: ${({ left }) => left && "auto"};
   margin-right: ${({ left }) => left && "20px"};
+`;
+export const Buton = styled.div`
+  position: absolute;
+  top: -10px;
+  right: -30px;
+  width: 20px;
+  height: 20px;
+  background-color: #056edc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 6px;
 `;

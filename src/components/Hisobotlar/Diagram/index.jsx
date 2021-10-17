@@ -1,5 +1,7 @@
-import React from "react";
-import { Container, Title, Top, Wraper } from "./style";
+import React, { useState } from "react";
+import { Buton, Container, Title, Top, Wraper } from "./style";
+import Calendar from "react-calendar";
+import "react-calendar/dist/Calendar.css";
 import {
   AreaChart,
   Area,
@@ -9,7 +11,7 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-import Calendar from "../../Generic/Calendar";
+import Calendars from "../../Generic/Calendar";
 const data = [
   {
     name: "Feb 16",
@@ -55,13 +57,17 @@ const data = [
   },
 ];
 export const Diagram = () => {
+  const [value, onChange] = useState(new Date());
+  const [position, setPosition] = useState("none");
   return (
     <Container>
       <Wraper>
         <Top>
           <Title>Yopilgan Zakaz | Barcha Filiallar</Title>
           <Title left="true">13.02.2020 - 19.02.2020</Title>
-          <Calendar />
+          <div onClick={() => setPosition("flex")}>
+            <Calendars />
+          </div>
         </Top>
         <ResponsiveContainer width="100%" height="80%">
           <AreaChart
@@ -86,6 +92,17 @@ export const Diagram = () => {
           </AreaChart>
         </ResponsiveContainer>
       </Wraper>
+      <div
+        style={{
+          display: position,
+          position: "absolute",
+          top: "70px",
+          right: "30px",
+        }}
+      >
+        <Calendar width="200" onChange={onChange} value={value} />
+        <Buton onClick={() => setPosition("none")}>X</Buton>
+      </div>
     </Container>
   );
 };
