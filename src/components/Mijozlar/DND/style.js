@@ -190,10 +190,11 @@ export const Input = styled.input`
   padding-left: 15px;
 `;
 export const Modal = styled.div`
-  position: sticky;
-  width: 100%;
-  height: 400px;
-  bottom: 0;
+  position: absolute;
+  width: 500px;
+  height: 100vh;
+  top: 50px;
+  right: 0;
   background-color: #fff;
 `;
 export const ButtonX = styled.div`
@@ -212,10 +213,11 @@ export const ButtonX = styled.div`
 `;
 export const ButtunInput = styled.div`
   width: 80%;
+  height: 300px;
   display: flex;
   flex-wrap: wrap;
   margin: auto;
-  justify-content: space-between;
+  justify-content: center;
   padding-top: 50px;
 `;
 export const Inputs = styled.input`

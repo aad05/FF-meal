@@ -30,6 +30,7 @@ import Save from "../../Generic/Save";
 import basket from "../../../assets/icon/basket.svg";
 import kategro from "../../../assets/icon/kategro.svg";
 import ssss from "../../../assets/icon/price.svg";
+import Fade from "react-reveal/Fade";
 
 export const DND = (props) => {
   const [baza, setBaza] = useState(data);
@@ -233,48 +234,54 @@ export const DND = (props) => {
         <Modal>
           <ButtonX onClick={() => props.onModalCancel()}>X</ButtonX>
           <ButtunInput>
-            <WrapperIcons>
-              <Inputs
-                onChange={(e) => setNewTitle(e.target.value)}
-                value={newTitle}
-                placeholder="Mijoz ismini kiritin..."
-              />
-              <Icons src={basket} />
-            </WrapperIcons>
-
-            <WrapperIcons>
-              <Inputs
-                onChange={(e) => setNewCategoriya(e.target.value)}
-                type="number"
-                value={newCategoriya}
-                placeholder="Telefon raqamni kiritin..."
-              />
-              <Icons src={kategro} />
-            </WrapperIcons>
-
-            <WrapperIcons>
-              <Inputs
-                onChange={(e) => setNewPrice(e.target.value)}
-                value={newPrice}
-                type="number"
-                placeholder="Buyurtma sonini kiritin kiritin..."
-              />
-              <Icons src={ssss} />
-            </WrapperIcons>
+            <Fade right>
+              <WrapperIcons>
+                <Inputs
+                  onChange={(e) => setNewTitle(e.target.value)}
+                  value={newTitle}
+                  placeholder="Mijoz ismini kiritin..."
+                />
+                <Icons src={basket} />
+              </WrapperIcons>
+            </Fade>
+            <Fade right duration={1500}>
+              <WrapperIcons>
+                <Inputs
+                  onChange={(e) => setNewCategoriya(e.target.value)}
+                  type="number"
+                  value={newCategoriya}
+                  placeholder="Telefon raqamni kiritin..."
+                />
+                <Icons src={kategro} />
+              </WrapperIcons>
+            </Fade>
+            <Fade right duration={2000}>
+              <WrapperIcons>
+                <Inputs
+                  onChange={(e) => setNewPrice(e.target.value)}
+                  value={newPrice}
+                  type="number"
+                  placeholder="Buyurtma sonini kiritin kiritin..."
+                />
+                <Icons src={ssss} />
+              </WrapperIcons>
+            </Fade>
           </ButtunInput>
           {newTitle.length !== 0 &&
           newPrice.length !== 0 &&
           newCategoriya.length !== 0 ? (
-            <ButtonAll onClick={onAdd} width="true">
-              <RestoreButton>
-                <Restore width="true" className="btn-pill">
-                  <span>
-                    <RestoreIcon src={restoreIcon} />
-                    Add
-                  </span>
-                </Restore>
-              </RestoreButton>
-            </ButtonAll>
+            <Fade right duration={1300}>
+              <ButtonAll onClick={onAdd} width="true">
+                <RestoreButton>
+                  <Restore width="true" className="btn-pill">
+                    <span>
+                      <RestoreIcon src={restoreIcon} />
+                      Add
+                    </span>
+                  </Restore>
+                </RestoreButton>
+              </ButtonAll>
+            </Fade>
           ) : (
             ""
           )}

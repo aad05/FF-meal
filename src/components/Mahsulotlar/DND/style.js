@@ -58,7 +58,7 @@ export const RestoreWrapper = styled.div`
   flex-direction: column;
 `;
 export const Restore = styled.div`
-  width: ${({ width }) => (width ? "300px" : "100%")};
+  width: 100%;
   border-radius: ${({ width }) => width && "25px"};
   height: 100%;
   font-size: 25px;
@@ -186,11 +186,13 @@ export const Input = styled.input`
 `;
 
 export const Modal = styled.div`
-  position: sticky;
-  width: 100%;
-  height: 300px;
-  bottom: 0;
+  position: absolute;
+  width: 500px;
+  height: 100vh;
+  top: 50px;
+  right: 0;
   background-color: #fff;
+  transform: 0.3s ease-in-out;
 `;
 export const ButtonX = styled.div`
   position: absolute;
@@ -209,10 +211,12 @@ export const ButtonX = styled.div`
 export const ButtunInput = styled.div`
   width: 80%;
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   margin: auto;
   justify-content: space-between;
   padding-top: 50px;
+  height: 300px;
 `;
 export const Inputs = styled.input`
   width: 300px;

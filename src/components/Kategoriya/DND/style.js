@@ -7,6 +7,7 @@ export const Container = styled.div`
   height: 100%;
   margin-top: 10px;
   justify-content: center;
+  position: relative;
 `;
 export const Wrapper = styled.div`
   width: 95%;
@@ -184,10 +185,11 @@ export const Input = styled.input`
   padding-left: 15px;
 `;
 export const Modal = styled.div`
-  position: sticky;
-  width: 100%;
-  height: 400px;
-  bottom: 0;
+  position: absolute;
+  width: 500px;
+  height: 100vh;
+  right: 0;
+  top: 50px;
   background-color: #fff;
 `;
 export const ButtonX = styled.div`
@@ -211,6 +213,7 @@ export const ButtunInput = styled.div`
   margin: auto;
   justify-content: space-between;
   padding-top: 50px;
+  height: 300px;
 `;
 export const Inputs = styled.input`
   width: 300px;
