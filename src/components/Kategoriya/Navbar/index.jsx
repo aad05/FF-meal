@@ -18,7 +18,7 @@ const Navbar = (props) => {
       </Wrapper>
       <Wrapper>
         <InputWrapper>
-          <Search placeholder="Qidirish" />
+          <Search placeholder="Qidiruv" />
           <SearchIcon />
         </InputWrapper>
       </Wrapper>
